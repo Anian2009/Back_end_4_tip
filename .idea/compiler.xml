@@ -9,5 +9,8 @@
         <module name="rest" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Ui" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

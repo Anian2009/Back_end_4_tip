@@ -7,7 +7,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Rest User Service!
@@ -42,9 +41,22 @@ public class RestUserService implements ResourceContainer {
     @POST
     @Path("/tip")
     public Map<String, String> addNewTip(Map<String, String> tip) {
+        Map<String,String> map = null;
+        if ((tip.get("text").trim()).equals("")){
+            tip.put("text","You mast something write.");
+            return tip;
+        }
+
+        if (map!=null) return map;
         tip.put("id", String.valueOf(tipFromDb.size() + 1));
         tipFromDb.add(tip);
         return tip;
+    }
+
+    @GET
+    @Path("/tips")
+    public List<Map<String, String>> getAllTip() {
+        return tipFromDb;
     }
 
 
